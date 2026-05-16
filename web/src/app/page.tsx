@@ -134,6 +134,8 @@ export default function Home() {
   const flowSection = useInView();
   const layerSection = useInView();
 
+  const sdkSection = useInView();
+
   return (
     <div className="min-h-screen bg-bg-base text-text-primary overflow-x-hidden">
       {/* Hero */}
@@ -151,10 +153,12 @@ export default function Home() {
             <span className="text-accent-purple drop-shadow-sm"> claim verification</span> and
             <span className="text-accent-purple drop-shadow-sm"> fund protection</span> layer for autonomous AI agents.
           </h1>
-          <p className="text-text-secondary text-sm mt-4 max-w-lg leading-relaxed">
-            Agents must prove their claims before executing trades.
-            If verification fails, the transaction never happens — funds stay safe.
-          </p>
+          <div className="mt-8 p-5 border border-accent-purple/30 bg-accent-purple/5 rounded-xl max-w-lg shadow-[0_0_20px_rgba(131,110,249,0.05)]">
+            <p className="text-accent-purple font-bold text-sm mb-2 uppercase tracking-wide">Zero Agent Trust Architecture</p>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              Funds <strong className="text-text-primary">never</strong> touch the AI agent's wallet. They are secured in the Talos Escrow contract and only released directly to the target protocol if all verifications pass.
+            </p>
+          </div>
           <div className="flex items-center gap-6 mt-8">
             <Link
               href="/demo"
@@ -213,6 +217,68 @@ export default function Home() {
         </p>
 
         <AnimatedFlow />
+      </section>
+
+      {/* SDK Integration */}
+      <section
+        ref={sdkSection.ref}
+        className={`max-w-5xl mx-auto px-6 py-16 border-t border-border-subtle transition-all duration-700 ${sdkSection.inView ? "animate-fade-up" : "opacity-0"}`}
+      >
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="md:w-1/2">
+            <h2 className="text-sm font-bold text-text-secondary tracking-wider mb-4">
+              AGENT INTEGRATION
+            </h2>
+            <h3 className="text-2xl font-bold text-text-primary mb-4 leading-tight">
+              Plug Talos into any <br/> Autonomous Agent
+            </h3>
+            <p className="text-text-secondary text-sm leading-relaxed mb-6">
+              Talos is built as a drop-in SDK for AI agents (Eliza, LangChain, etc.). You don't give the agent direct access to your wallet or private keys. 
+              Instead, the agent uses the SDK to propose a trade, and the funds are sent to the <span className="text-accent-purple font-semibold">Talos Escrow</span>.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "Agent creates an intent (e.g. swap USDC for MON)",
+                "Talos intercepts and routes funds to Escrow",
+                "Talos validates Oracle prices and rules on-chain",
+                "If valid: Execute. If failed: Escrow refunds user."
+              ].map((step, i) => (
+                <li key={i} className="flex items-start gap-3 text-xs text-text-secondary">
+                  <span className="text-accent-purple mt-0.5">✓</span>
+                  {step}
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="md:w-1/2 w-full">
+            <div className="bg-[#0d0d12] border border-border-subtle/50 rounded-xl p-6 shadow-2xl relative overflow-hidden group hover:border-accent-purple/30 transition-colors duration-500">
+               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent-purple to-accent-green opacity-50" />
+               <pre className="text-[11px] md:text-xs font-mono text-text-primary/90 overflow-x-auto">
+                 <code>
+<span className="text-accent-purple">import</span> {'{ TalosAgent }'} <span className="text-accent-purple">from</span> <span className="text-accent-green">"@talos/sdk"</span>;
+
+<span className="text-text-secondary/50">{"// 1. Initialize the agent with Talos"}</span>
+<span className="text-accent-purple">const</span> agent = <span className="text-accent-purple">new</span> TalosAgent({'{'}
+  escrowAddress: <span className="text-accent-green">"0x..."</span>,
+  rules: {'{'} maxDrawdown: <span className="text-accent-green">"5%"</span> {'}'}
+{'}'});
+
+<span className="text-text-secondary/50">{"// 2. Agent proposes a trade (Funds go to Escrow)"}</span>
+<span className="text-accent-purple">const</span> tx = <span className="text-accent-purple">await</span> agent.proposeTrade({'{'}
+  target: <span className="text-accent-green">"Uniswap"</span>,
+  tokenIn: <span className="text-accent-green">"USDC"</span>,
+  tokenOut: <span className="text-accent-green">"MON"</span>,
+  amount: <span className="text-accent-purple">100</span>
+{'}'});
+
+<span className="text-text-secondary/50">{"// 3. Talos verifies and executes automatically"}</span>
+console.log(tx.status); <span className="text-text-secondary/50">{"// 'VERIFIED' or 'REFUNDED'"}</span>
+                 </code>
+               </pre>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* 3 Layers */}
