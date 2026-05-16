@@ -116,19 +116,6 @@ export function VerificationFeed() {
           </div>
         )}
       </Panel>
-
-      <div className="grid grid-cols-2 gap-4 mt-4">
-        <Panel title="Protected Funds">
-          <p className="text-accent-green text-3xl font-bold font-mono py-2">
-            {totalProtected > 0n
-              ? `${formatEther(totalProtected)} MON`
-              : "0"}
-          </p>
-        </Panel>
-        <Panel title="Blocked Txns">
-          <p className="text-accent-red text-3xl font-bold font-mono py-2">{blockedCount}</p>
-        </Panel>
-      </div>
     </div>
   );
 }
