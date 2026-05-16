@@ -129,6 +129,45 @@ This creates strong economic incentives for agents to be honest.
 
 ---
 
+## Agent SDK Integration
+
+Talos is designed as a drop-in SDK for AI agents (Eliza, LangChain, or custom frameworks). Developers integrate the SDK into their agent, allowing it to propose trades without ever holding the user's private keys or funds directly.
+
+### 1. Initialize the Agent
+```typescript
+import { TalosAgent } from "@talos-protocol/sdk";
+
+const agent = new TalosAgent({
+  escrowAddress: "0x...", // User's deployed Talos Escrow Contract
+  rules: {
+    maxDrawdown: "5%",
+    slippage: "1%"
+  }
+});
+```
+
+### 2. Propose a Trade (Zero Trust)
+The agent generates an intent and sends it to the Escrow. The funds are routed through the Escrow, not the agent's wallet.
+```typescript
+// Agent proposes a trade based on its logic
+const intent = await agent.proposeTrade({
+  target: "UniswapV4",
+  tokenIn: "USDC",
+  tokenOut: "MON",
+  amountIn: 100
+});
+```
+
+### 3. Verify & Execute
+The Talos Protocol automatically intercepts the proposed intent, hashes it, and verifies it against on-chain policies and Chainlink Oracles.
+```typescript
+console.log(intent.status); 
+// -> "VERIFIED" (Trade executed successfully)
+// -> "REFUNDED" (Agent hallucinated/lied, funds returned safely)
+```
+
+---
+
 ## Testnet Deployment (Monad Testnet — Chain 10143)
 
 | Contract | Address |
