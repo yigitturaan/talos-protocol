@@ -284,67 +284,61 @@ console.log(tx.status); <span className="text-text-secondary/50">{"// 'VERIFIED'
       {/* Monad & MEV Protection */}
       <section
         ref={monadSection.ref}
-        className={`max-w-5xl mx-auto px-6 py-16 border-t border-border-subtle transition-all duration-700 ${monadSection.inView ? "animate-fade-up" : "opacity-0"}`}
+        className={`max-w-5xl mx-auto px-6 py-20 border-t border-border-subtle transition-all duration-700 ${monadSection.inView ? "animate-fade-up" : "opacity-0"}`}
       >
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col lg:flex-row gap-16">
           {/* Monad Features */}
           <div className="lg:w-1/3">
-            <h2 className="text-sm font-bold text-text-secondary tracking-wider mb-4">
-              MONAD NATIVE
+            <h2 className="text-base font-bold text-text-secondary tracking-wider mb-6">
+              BUILT FOR MONAD
             </h2>
-            <h3 className="text-xl font-bold text-text-primary mb-4 leading-tight">
-              Speed & Architecture
+            <h3 className="text-3xl font-bold text-text-primary mb-6 leading-tight">
+              Unmatched Speed
             </h3>
-            <div className="space-y-4 mt-6">
-              <div className="p-4 rounded-xl border border-border-subtle/50 bg-bg-elevated/20 hover:border-accent-purple/30 transition-colors">
-                <span className="text-accent-purple font-bold text-sm">400ms Block Time</span>
-                <p className="text-[11px] text-text-secondary mt-1">The entire Commit-Verify-Execute flow completes in less than 2 seconds seamlessly.</p>
+            <div className="space-y-6 mt-8">
+              <div className="p-6 rounded-2xl border border-border-subtle/50 bg-bg-elevated/20 hover:border-accent-purple/50 transition-colors">
+                <span className="text-accent-purple font-bold text-xl block mb-2">400ms Block Time</span>
+                <p className="text-sm text-text-secondary leading-relaxed">Commit, Verify, and Execute in under 2 seconds. Seamless UI.</p>
               </div>
-              <div className="p-4 rounded-xl border border-border-subtle/50 bg-bg-elevated/20 hover:border-accent-purple/30 transition-colors">
-                <span className="text-accent-purple font-bold text-sm">Deferred Execution</span>
-                <p className="text-[11px] text-text-secondary mt-1">Monad's N-2 state lag means you can't trust current state alone. Escrow neutralizes this risk.</p>
+              <div className="p-6 rounded-2xl border border-border-subtle/50 bg-bg-elevated/20 hover:border-accent-purple/50 transition-colors">
+                <span className="text-accent-purple font-bold text-xl block mb-2">Deferred Execution</span>
+                <p className="text-sm text-text-secondary leading-relaxed">Our Escrow model perfectly neutralizes Monad's N-2 state lag risks.</p>
               </div>
             </div>
           </div>
           
           {/* MEV Protection */}
           <div className="lg:w-2/3">
-            <h2 className="text-sm font-bold text-text-secondary tracking-wider mb-4">
+            <h2 className="text-base font-bold text-text-secondary tracking-wider mb-6">
               DARK FOREST DEFENSE
             </h2>
-            <h3 className="text-xl font-bold text-text-primary mb-4 leading-tight">
-              Absolute MEV & Sandwich Protection
+            <h3 className="text-3xl font-bold text-text-primary mb-6 leading-tight">
+              Absolute MEV Protection
             </h3>
-            <p className="text-xs text-text-secondary mb-6">
-              Talos's Commit-Reveal mechanism is purpose-built to stop MEV bots from exploiting AI agent strategies.
+            <p className="text-base text-text-secondary mb-10 leading-relaxed max-w-xl">
+              Talos's <strong>Commit-Reveal</strong> mechanism completely stops MEV bots and sandwich attacks.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl border border-border-subtle/50 bg-bg-elevated/20">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="flex items-center justify-center w-5 h-5 rounded bg-accent-purple/20 text-accent-purple font-bold text-[10px]">1</span>
-                  <span className="text-sm text-text-primary font-bold">One-Way Hashes</span>
+            <div className="flex flex-col gap-6">
+              <div className="p-6 rounded-2xl border border-border-subtle/50 bg-bg-elevated/20 flex gap-6 items-center hover:border-accent-purple/30 transition-colors">
+                <span className="flex items-center justify-center min-w-12 h-12 rounded-xl bg-accent-purple/20 text-accent-purple font-black text-xl">1</span>
+                <div>
+                  <span className="text-lg text-text-primary font-bold block mb-1">One-Way Hashes</span>
+                  <p className="text-sm text-text-secondary">Intents are keccak256 hashes. Bots cannot reverse-engineer your strategy.</p>
                 </div>
-                <p className="text-[11px] text-text-secondary leading-relaxed">
-                  Intents are committed as keccak256 hashes. A malicious MEV bot cannot reverse-engineer the hash to steal your strategy (Zero Alpha Leakage).
-                </p>
               </div>
-              <div className="p-5 rounded-xl border border-border-subtle/50 bg-bg-elevated/20">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="flex items-center justify-center w-5 h-5 rounded bg-accent-purple/20 text-accent-purple font-bold text-[10px]">2</span>
-                  <span className="text-sm text-text-primary font-bold">Atomic 400ms Execution</span>
+              <div className="p-6 rounded-2xl border border-border-subtle/50 bg-bg-elevated/20 flex gap-6 items-center hover:border-accent-purple/30 transition-colors">
+                <span className="flex items-center justify-center min-w-12 h-12 rounded-xl bg-accent-purple/20 text-accent-purple font-black text-xl">2</span>
+                <div>
+                  <span className="text-lg text-text-primary font-bold block mb-1">Atomic Execution</span>
+                  <p className="text-sm text-text-secondary">Secret reveal and swap happen in the same 400ms block. No front-running.</p>
                 </div>
-                <p className="text-[11px] text-text-secondary leading-relaxed">
-                  When the secret is revealed, verification and the swap happen in the exact same atomic transaction block. No window is left for front-running.
-                </p>
               </div>
-              <div className="p-5 rounded-xl border border-border-subtle/50 bg-bg-elevated/20 md:col-span-2">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="flex items-center justify-center w-5 h-5 rounded bg-accent-purple/20 text-accent-purple font-bold text-[10px]">3</span>
-                  <span className="text-sm text-text-primary font-bold">SlippageGuard Policy</span>
+              <div className="p-6 rounded-2xl border border-border-subtle/50 bg-bg-elevated/20 flex gap-6 items-center hover:border-accent-purple/30 transition-colors">
+                <span className="flex items-center justify-center min-w-12 h-12 rounded-xl bg-accent-purple/20 text-accent-purple font-black text-xl">3</span>
+                <div>
+                  <span className="text-lg text-text-primary font-bold block mb-1">Slippage Guard</span>
+                  <p className="text-sm text-text-secondary">On-chain engine blocks sandwich attempts instantly, refunding the user.</p>
                 </div>
-                <p className="text-[11px] text-text-secondary leading-relaxed">
-                  If an MEV bot attempts pool manipulation, the on-chain SlippageGuard Engine compares expected minimum outputs against live metrics. Any sandwich attempt triggers an instant block and safe refund.
-                </p>
               </div>
             </div>
           </div>
