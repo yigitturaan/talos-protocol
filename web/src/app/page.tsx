@@ -182,22 +182,22 @@ export default function Home() {
           5 THREATS SOLVED
         </h2>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           {threats.map((t, i) => (
             <div
               key={i}
-              className={`group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-5 border border-border-subtle/50 rounded-xl bg-bg-elevated/20 hover:bg-bg-elevated/40 hover:border-accent-purple/40 hover:-translate-y-0.5 hover:shadow-md transition-all duration-500 ${threatSection.inView ? "animate-fade-up" : "opacity-0"}`}
+              className={`group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-6 border border-border-subtle/50 rounded-2xl bg-bg-elevated/20 hover:bg-bg-elevated/40 hover:border-accent-purple/40 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-500 ${threatSection.inView ? "animate-fade-up" : "opacity-0"}`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              <div className="flex items-center gap-4 md:w-1/3">
-                <span className="text-text-secondary/50 text-[10px] font-mono">0{i + 1}</span>
-                <p className="text-sm text-text-primary font-bold group-hover:text-accent-purple transition-colors duration-300">{t.title}</p>
+              <div className="flex items-center gap-5 md:w-1/3">
+                <span className="text-text-secondary/50 text-sm font-mono">0{i + 1}</span>
+                <p className="text-lg md:text-xl text-text-primary font-bold group-hover:text-accent-purple transition-colors duration-300">{t.title}</p>
               </div>
               
-              <div className="hidden md:block text-accent-purple/40 font-bold group-hover:text-accent-purple/80 transition-colors duration-300">→</div>
+              <div className="hidden md:block text-accent-purple/40 text-xl font-bold group-hover:text-accent-purple/80 transition-colors duration-300">→</div>
               
               <div className="md:w-1/2 flex md:justify-end">
-                <p className="text-xs text-accent-green/90 font-medium text-left md:text-right">{t.solution}</p>
+                <p className="text-sm md:text-base text-accent-green/90 font-medium text-left md:text-right leading-relaxed">{t.solution}</p>
               </div>
             </div>
           ))}
