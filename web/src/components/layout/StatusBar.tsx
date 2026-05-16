@@ -19,7 +19,7 @@ export function StatusBar() {
   }, [dataUpdatedAt]);
 
   return (
-    <footer className="flex items-center justify-between px-4 py-1 border-t border-border-subtle bg-bg-panel text-[10px] text-text-secondary">
+    <footer className="flex items-center justify-between px-6 py-2 border-t border-border-subtle/50 bg-bg-base/80 backdrop-blur-md text-[11px] text-text-secondary/70">
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-1">
           <Pulse

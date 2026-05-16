@@ -134,10 +134,10 @@ export function DemoPanel() {
                 key={key}
                 onClick={() => !running && setSelectedBot(key)}
                 disabled={running}
-                className={`text-left p-3 rounded-sm border transition-all ${
+                className={`text-left p-3 rounded-md border transition-all ${
                   selectedBot === key
-                    ? "border-accent-cyan bg-bg-elevated"
-                    : "border-border-subtle hover:border-text-secondary"
+                    ? "border-accent-purple bg-bg-elevated/60 shadow-sm"
+                    : "border-border-subtle/50 hover:border-text-secondary/50"
                 } ${running ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
               >
                 <div className="flex items-center gap-2 mb-1">
@@ -160,10 +160,10 @@ export function DemoPanel() {
         <button
           onClick={runScenario}
           disabled={!selectedBot || running}
-          className={`w-full py-3 rounded-sm text-sm font-bold transition-all ${
+          className={`w-full py-3 rounded-md text-sm font-bold shadow-sm transition-all duration-300 ${
             !selectedBot || running
-              ? "bg-bg-elevated text-text-secondary cursor-not-allowed"
-              : "bg-accent-cyan text-bg-base hover:brightness-110 cursor-pointer"
+              ? "bg-bg-elevated/50 text-text-secondary cursor-not-allowed"
+              : "bg-accent-purple text-white hover:bg-accent-purple/90 cursor-pointer hover:shadow-md hover:-translate-y-0.5"
           }`}
         >
           {running
@@ -190,7 +190,7 @@ export function DemoPanel() {
                     <div className="w-3 h-3 rounded-full border border-border-subtle" />
                   )}
                   {step.status === "active" && (
-                    <Pulse color="cyan" size="md" />
+                    <Pulse color="purple" size="md" />
                   )}
                   {step.status === "done" && (
                     <Pulse color="green" size="md" />
@@ -201,9 +201,9 @@ export function DemoPanel() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p
-                    className={`text-xs ${
+                    className={`text-sm font-medium ${
                       step.status === "active"
-                        ? "text-accent-cyan"
+                        ? "text-accent-purple"
                         : step.status === "done"
                           ? "text-accent-green"
                           : step.status === "error"
@@ -223,9 +223,9 @@ export function DemoPanel() {
                       href={step.txLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[10px] text-accent-cyan hover:underline"
+                      className="text-[11px] text-accent-purple hover:text-accent-purple/80 hover:underline transition-colors"
                     >
-                      Explorer →
+                      Explorer ↗
                     </a>
                   )}
                 </div>
@@ -244,8 +244,8 @@ export function DemoPanel() {
         >
           <div className="space-y-3">
             {/* User section */}
-            <div className="p-2 rounded-sm bg-bg-elevated border border-border-subtle">
-              <p className="text-[10px] text-accent-cyan mb-1.5 font-bold">USER</p>
+            <div className="p-3 rounded-md bg-bg-elevated/30 border border-border-subtle/50">
+              <p className="text-[11px] text-accent-purple mb-2 font-semibold tracking-wide">USER</p>
               <div className="flex justify-between text-[11px]">
                 <span className="text-text-secondary">Address</span>
                 <span className="text-text-primary font-mono">
@@ -261,7 +261,7 @@ export function DemoPanel() {
               <div className="flex justify-between text-[11px] mt-1">
                 <span className="text-text-secondary">Escrow</span>
                 {result.passed ? (
-                  <span className="text-accent-cyan">100 tUSDC spent on swap</span>
+                  <span className="text-accent-purple">100 tUSDC spent on swap</span>
                 ) : (
                   <span className="text-accent-green font-bold">100 tUSDC REFUNDED</span>
                 )}
@@ -269,8 +269,8 @@ export function DemoPanel() {
             </div>
 
             {/* Agent section */}
-            <div className="p-2 rounded-sm bg-bg-elevated border border-border-subtle">
-              <p className="text-[10px] text-accent-amber mb-1.5 font-bold">AGENT (Bot)</p>
+            <div className="p-3 rounded-md bg-bg-elevated/30 border border-border-subtle/50">
+              <p className="text-[11px] text-accent-amber mb-2 font-semibold tracking-wide">AGENT (Bot)</p>
               <div className="flex justify-between text-[11px]">
                 <span className="text-text-secondary">Address</span>
                 <span className="text-text-primary font-mono">
@@ -305,17 +305,17 @@ export function DemoPanel() {
             </div>
 
             {/* Fund Flow */}
-            <div className="p-2 rounded-sm bg-bg-base border border-border-subtle">
-              <p className="text-[10px] text-text-secondary mb-2 font-bold">FUND FLOW</p>
+            <div className="p-3 rounded-md bg-bg-base/50 border border-border-subtle/50">
+              <p className="text-[11px] text-text-secondary mb-3 font-semibold tracking-wide">FUND FLOW</p>
               {result.passed ? (
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-cyan">1.</span>
-                    <span className="text-text-primary">User locked 100 tUSDC → Escrow</span>
+                    <span className="text-accent-purple">1.</span>
+                    <span className="text-text-primary/90">User locked 100 tUSDC → Escrow</span>
                   </div>
                   <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-cyan">2.</span>
-                    <span className="text-text-primary">Agent verified → Escrow released</span>
+                    <span className="text-accent-purple">2.</span>
+                    <span className="text-text-primary/90">Agent verified → Escrow released</span>
                   </div>
                   <div className="flex items-center gap-2 text-[11px]">
                     <span className="text-accent-green">3.</span>
@@ -329,8 +329,8 @@ export function DemoPanel() {
               ) : (
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-cyan">1.</span>
-                    <span className="text-text-primary">User locked 100 tUSDC → Escrow</span>
+                    <span className="text-accent-purple">1.</span>
+                    <span className="text-text-primary/90">User locked 100 tUSDC → Escrow</span>
                   </div>
                   <div className="flex items-center gap-2 text-[11px]">
                     <span className="text-accent-red">2.</span>

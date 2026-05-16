@@ -15,24 +15,23 @@ export function Panel({
   className,
   children,
   badge,
-  badgeColor = "text-accent-cyan",
+  badgeColor = "text-accent-purple",
 }: PanelProps) {
   return (
     <div
       className={clsx(
-        "bg-bg-panel border border-border-subtle rounded-sm overflow-hidden",
+        "bg-bg-panel border border-border-subtle/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300",
         className,
       )}
     >
-      <div className="flex items-center justify-between px-3 py-1.5 border-b border-border-subtle bg-bg-elevated">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-border-subtle/30 bg-bg-elevated/30 backdrop-blur-sm">
         <div className="flex items-center gap-2">
-          <span className="text-text-secondary text-[10px]">{">"}</span>
-          <span className="text-xs text-text-primary uppercase tracking-wider">
+          <span className="text-sm font-semibold text-text-primary tracking-wide">
             {title}
           </span>
         </div>
         {badge && (
-          <span className={clsx("text-[10px]", badgeColor)}>{badge}</span>
+          <span className={clsx("text-[10px] font-medium px-2 py-0.5 rounded-full bg-bg-base/50", badgeColor)}>{badge}</span>
         )}
       </div>
       <div className="p-3">{children}</div>

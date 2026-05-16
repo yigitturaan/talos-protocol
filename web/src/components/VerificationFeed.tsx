@@ -11,107 +11,84 @@ import { formatEther } from "viem";
 
 const typeConfig: Record<
   VerificationEvent["type"],
-  { label: string; color: "green" | "red" | "amber" | "cyan"; layers: string }
+  { label: string; color: "green" | "red" | "amber" | "purple" | "cyan" }
 > = {
   committed: {
     label: "COMMITTED",
-    color: "cyan",
-    layers: "---",
+    color: "purple",
   },
   passed: {
     label: "PASSED",
     color: "green",
-    layers: "H:OK O:OK P:OK",
   },
   failed: {
     label: "REJECTED",
     color: "red",
-    layers: "",
   },
   softReject: {
     label: "SOFT REJECT",
     color: "amber",
-    layers: "H:OK O:DRIFT",
   },
   refunded: {
     label: "REFUNDED",
     color: "amber",
-    layers: "---",
   },
   slashed: {
     label: "SLASHED",
     color: "red",
-    layers: "---",
   },
 };
 
-function failureLayers(code?: number): string {
-  if (code === 1) return "H:FAIL O:-- P:--";
-  if (code === 2) return "H:OK O:FAIL P:--";
-  if (code === 3) return "H:OK O:OK P:FAIL";
-  return "H:?? O:?? P:??";
-}
-
 function EventCard({ event: e }: { event: VerificationEvent }) {
   const cfg = typeConfig[e.type];
-  const layers =
-    e.type === "failed" ? failureLayers(e.failureCode) : cfg.layers;
 
   return (
-    <div className="flex items-start gap-3 py-2 px-2 border-b border-border-subtle last:border-0 hover:bg-bg-elevated/50 transition-colors">
-      <div className="pt-0.5">
+    <div className="flex items-center gap-4 py-3 px-4 border-b border-border-subtle/50 last:border-0 hover:bg-bg-elevated/40 transition-all duration-300 animate-fade-up shadow-sm mb-1 rounded-md">
+      <div className="flex-shrink-0">
         <Pulse color={cfg.color} size="md" />
       </div>
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4">
         <div className="flex items-center gap-2">
           <span
-            className={`text-[10px] font-bold ${
+            className={`text-xs font-semibold tracking-wide ${
               cfg.color === "green"
                 ? "text-accent-green"
                 : cfg.color === "red"
                   ? "text-accent-red"
                   : cfg.color === "amber"
                     ? "text-accent-amber"
-                    : "text-accent-cyan"
+                    : cfg.color === "purple"
+                      ? "text-accent-purple"
+                      : "text-accent-cyan"
             }`}
           >
             {cfg.label}
           </span>
           {e.agent && (
-            <span className="text-[10px] text-text-secondary">
+            <span className="text-[11px] text-text-secondary/70">
               {formatAddress(e.agent)}
             </span>
           )}
-          {e.intentId && (
-            <span className="text-[10px] text-text-secondary opacity-50">
-              {e.intentId.slice(0, 10)}...
-            </span>
-          )}
         </div>
-        <div className="flex items-center gap-3 mt-0.5">
-          <span className="text-[10px] text-text-secondary font-mono">
-            {layers}
-          </span>
+        
+        <div className="flex items-center gap-3">
           {e.amount && (
-            <span className="text-[10px] text-text-secondary">
-              {formatEther(e.amount)} refunded
+            <span className="text-[11px] text-text-secondary">
+              {formatEther(e.amount)} <span className="opacity-50">USDC</span>
             </span>
           )}
           {e.slashAmount && (
-            <span className="text-[10px] text-accent-red">
-              -{formatEther(e.slashAmount)} MON slashed
+            <span className="text-[11px] text-accent-red font-medium">
+              -{formatEther(e.slashAmount)} MON
             </span>
           )}
           {e.deviationBps !== undefined && e.deviationBps > 0 && (
-            <span className="text-[10px] text-accent-amber">
+            <span className="text-[11px] text-accent-amber">
               {(e.deviationBps / 100).toFixed(1)}% drift
             </span>
           )}
         </div>
       </div>
-      <span className="text-[9px] text-text-secondary opacity-50 whitespace-nowrap">
-        #{e.blockNumber.toString()}
-      </span>
     </div>
   );
 }

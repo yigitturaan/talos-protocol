@@ -5,23 +5,25 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       colors: {
         bg: {
-          base: "#0a0e14",
-          panel: "#111820",
-          elevated: "#1a2230",
+          base: "#0f0f13",
+          panel: "#15151c",
+          elevated: "#1c1b26",
         },
         border: {
-          subtle: "#1f2933",
+          subtle: "#2d2a3d",
         },
         text: {
-          primary: "#e6edf3",
-          secondary: "#768390",
+          primary: "#f4f4f5",
+          secondary: "#a1a1aa",
         },
         accent: {
           cyan: "#39d0d8",
+          purple: "#836ef9",
           green: "#3fb950",
           red: "#f85149",
           amber: "#d29922",

@@ -61,12 +61,27 @@
 @keyframes flow-pass {
   0% {
     top: 0%;
+    color: #836ef9;
+    background-color: #836ef9;
     opacity: 0;
   }
   5% {
     opacity: 1;
   }
-  95% {
+  30% {
+    top: 33%;
+    color: #836ef9;
+    background-color: #836ef9;
+  }
+  35% {
+    color: #3fb950;
+    background-color: #3fb950;
+  }
+  60% {
+    top: 66%;
+  }
+  90% {
+    top: 100%;
     opacity: 1;
   }
   100% {
@@ -78,17 +93,30 @@
 @keyframes flow-fail {
   0% {
     top: 0%;
+    color: #836ef9;
+    background-color: #836ef9;
     opacity: 0;
   }
   5% {
     opacity: 1;
   }
+  25% {
+    top: 33%;
+    color: #836ef9;
+    background-color: #836ef9;
+  }
+  30% {
+    color: #f85149;
+    background-color: #f85149;
+  }
   50% {
-    top: 55%;
-    opacity: 1;
+    top: 66%;
   }
   70% {
-    top: 55%;
+    top: 33%;
+  }
+  90% {
+    top: 0%;
     opacity: 1;
   }
   100% {

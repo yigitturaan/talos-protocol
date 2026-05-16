@@ -16,12 +16,12 @@ export function TopBar() {
   const chainLabel = chainNames[chainId] || `Chain ${chainId}`;
 
   return (
-    <header className="flex items-center justify-between px-4 py-2 border-b border-border-subtle bg-bg-panel">
-      <div className="flex items-center gap-3">
-        <span className="text-accent-cyan font-bold text-sm tracking-widest">
+    <header className="flex items-center justify-between px-6 py-3 border-b border-border-subtle/50 bg-bg-base/80 backdrop-blur-md sticky top-0 z-50">
+      <div className="flex items-baseline gap-2">
+        <span className="text-accent-purple font-extrabold text-lg tracking-widest drop-shadow-sm">
           TALOS
         </span>
-        <span className="text-text-secondary text-xs">TERMINAL</span>
+        <span className="text-text-secondary/80 text-xs font-medium tracking-[0.2em]">TERMINAL</span>
       </div>
 
       <div className="flex items-center gap-2 text-xs text-text-secondary">

@@ -13,7 +13,7 @@ const KNOWN_AGENTS: Address[] = [
 
 function scoreColor(score: number): string {
   if (score >= 1200) return "text-accent-green";
-  if (score >= 800) return "text-accent-cyan";
+  if (score >= 800) return "text-accent-purple";
   if (score >= 400) return "text-accent-amber";
   return "text-accent-red";
 }
@@ -31,37 +31,37 @@ function AgentRowCard({
       : "N/A";
 
   return (
-    <div className="flex items-center gap-3 py-2 px-2 border-b border-border-subtle last:border-0 hover:bg-bg-elevated/50 transition-colors">
-      <span className="text-text-secondary text-[10px] w-4 text-right">
+    <div className="flex items-center gap-3 py-3 px-4 border-b border-border-subtle/50 last:border-0 hover:bg-bg-elevated/40 transition-colors">
+      <span className="text-text-secondary text-[11px] w-4 text-right">
         {rank}
       </span>
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-2">
         <Pulse color={row.isBanned ? "red" : "green"} />
-        <span className="text-xs text-text-primary font-mono">
+        <span className="text-xs text-text-primary tracking-wide font-medium">
           {formatAddress(row.agent)}
         </span>
       </div>
       <div className="flex-1" />
-      <div className="flex items-center gap-4 text-[10px]">
+      <div className="flex items-center gap-5 text-[11px]">
         <div className="text-right">
           <span className={`font-bold ${scoreColor(row.score)}`}>
             {row.score}
           </span>
-          <span className="text-text-secondary ml-1">ELO</span>
+          <span className="text-text-secondary/70 ml-1">ELO</span>
         </div>
         <div className="text-right min-w-[3rem]">
-          <span className="text-text-primary">{row.totalVerifications}</span>
-          <span className="text-text-secondary ml-1">txns</span>
+          <span className="text-text-primary font-medium">{row.totalVerifications}</span>
+          <span className="text-text-secondary/70 ml-1">tx</span>
         </div>
         <div className="text-right min-w-[2.5rem]">
-          <span className="text-text-primary">{successRate}</span>
-          <span className="text-text-secondary">%</span>
+          <span className="text-text-primary font-medium">{successRate}</span>
+          <span className="text-text-secondary/70 ml-0.5">%</span>
         </div>
         <div className="text-right min-w-[4rem]">
-          <span className="text-text-primary">
+          <span className="text-text-primary font-medium">
             {formatEther(row.stake)}
           </span>
-          <span className="text-text-secondary ml-1">MON</span>
+          <span className="text-text-secondary/70 ml-1">MON</span>
         </div>
       </div>
     </div>
@@ -81,14 +81,14 @@ export function ReputationLeaderboard() {
         </div>
       ) : (
         <div className="-m-3">
-          <div className="flex items-center gap-3 py-1.5 px-2 text-[9px] text-text-secondary uppercase tracking-wider border-b border-border-subtle">
-            <span className="w-4 text-right">#</span>
-            <span>Agent</span>
+          <div className="flex items-center gap-3 py-2 px-4 text-[10px] text-text-secondary/70 uppercase tracking-wider border-b border-border-subtle/50 bg-bg-base/30">
+            <span className="w-4 text-right font-semibold">#</span>
+            <span className="font-semibold">Agent</span>
             <div className="flex-1" />
-            <span className="w-12 text-right">Score</span>
-            <span className="w-12 text-right">Txns</span>
-            <span className="w-10 text-right">Win%</span>
-            <span className="w-16 text-right">Stake</span>
+            <span className="w-12 text-right font-semibold">Score</span>
+            <span className="w-12 text-right font-semibold">Txns</span>
+            <span className="w-10 text-right font-semibold">Win%</span>
+            <span className="w-16 text-right font-semibold">Stake</span>
           </div>
           {rows.map((row, i) => (
             <AgentRowCard key={row.agent} row={row} rank={i + 1} />

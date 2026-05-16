@@ -23,103 +23,84 @@ function useInView(threshold = 0.2) {
 
 function AnimatedFlow() {
   return (
-    <div className="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
-      {/* Pass Flow */}
-      <div className="relative">
-        <p className="text-center text-xs text-accent-green font-bold mb-4 tracking-wider">
-          VERIFICATION PASSED
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-4xl mx-auto py-8">
+      {/* PASS FLOW */}
+      <div className="flex flex-col items-center">
+        <p className="text-center text-sm text-accent-green font-bold mb-8 tracking-wider uppercase drop-shadow-sm">
+          Verification Passed
         </p>
-        <div className="relative flex flex-col items-center gap-0">
-          <FlowNode label="User" sublabel="100 USDC" color="cyan" />
-          <FlowArrow color="cyan" />
-          <FlowNode label="Escrow" sublabel="Locked" color="cyan" />
-          <FlowArrow color="green" />
-          <FlowNode label="Talos" sublabel="3 layers OK" color="green" />
-          <FlowArrow color="green" />
-          <FlowNode label="Swap" sublabel="Executed" color="green" />
-
-          {/* Animated dot */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="relative w-full h-full">
-              <div className="flow-dot-pass absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent-green shadow-[0_0_8px_rgba(63,185,80,0.8)]" />
-            </div>
+        <div className="relative h-80 w-full max-w-[240px]">
+          {/* Main Track Line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[3px] bg-border-subtle/50 -translate-x-1/2 rounded-full" />
+          
+          {/* Labels */}
+          <div className="absolute w-full top-[0%] flex justify-between items-center -mt-3">
+             <span className="text-sm font-semibold text-accent-purple w-1/2 text-right pr-6 drop-shadow-sm">User</span>
+             <span className="text-xs text-text-secondary w-1/2 pl-6">Initiates</span>
           </div>
-        </div>
-        <div className="mt-4 text-center">
-          <span className="text-[10px] text-accent-green/80">
-            Funds released — trade completed
-          </span>
+          <div className="absolute w-full top-[33%] flex justify-between items-center -mt-3">
+             <span className="text-sm font-semibold text-text-primary w-1/2 text-right pr-6">Escrow</span>
+             <span className="text-xs text-text-secondary w-1/2 pl-6">Locked</span>
+          </div>
+          <div className="absolute w-full top-[66%] flex justify-between items-center -mt-3">
+             <span className="text-sm font-semibold text-text-primary w-1/2 text-right pr-6">Talos</span>
+             <span className="text-xs text-accent-green w-1/2 pl-6">Validates</span>
+          </div>
+          <div className="absolute w-full top-[100%] flex justify-between items-center -mt-3">
+             <span className="text-sm font-semibold text-text-primary w-1/2 text-right pr-6">Target</span>
+             <span className="text-xs text-accent-green w-1/2 pl-6 font-medium">Executed</span>
+          </div>
+
+          {/* Node Dots */}
+          <div className="absolute left-1/2 top-[0%] w-3 h-3 rounded-full bg-accent-purple -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+          <div className="absolute left-1/2 top-[33%] w-3 h-3 rounded-full bg-border-subtle -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+          <div className="absolute left-1/2 top-[66%] w-3 h-3 rounded-full bg-border-subtle -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+          <div className="absolute left-1/2 top-[100%] w-3 h-3 rounded-full bg-border-subtle -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+
+          {/* Animated Dot */}
+          <div className="flow-dot-pass absolute left-1/2 w-4 h-4 rounded-full -translate-x-1/2 -mt-2 shadow-[0_0_16px_currentColor] z-20" />
         </div>
       </div>
 
-      {/* Fail Flow */}
-      <div className="relative">
-        <p className="text-center text-xs text-accent-red font-bold mb-4 tracking-wider">
-          VERIFICATION FAILED
+      {/* FAIL FLOW */}
+      <div className="flex flex-col items-center">
+        <p className="text-center text-sm text-accent-red font-bold mb-8 tracking-wider uppercase drop-shadow-sm">
+          Verification Failed
         </p>
-        <div className="relative flex flex-col items-center gap-0">
-          <FlowNode label="User" sublabel="100 USDC" color="cyan" />
-          <FlowArrow color="cyan" />
-          <FlowNode label="Escrow" sublabel="Locked" color="cyan" />
-          <FlowArrow color="red" />
-          <FlowNode label="Talos" sublabel="REJECT" color="red" />
-          <FlowArrowReverse />
-          <FlowNode label="User" sublabel="REFUND" color="green" />
-
-          {/* Animated dot */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="relative w-full h-full">
-              <div className="flow-dot-fail absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent-red shadow-[0_0_8px_rgba(248,81,73,0.8)]" />
-            </div>
+        <div className="relative h-80 w-full max-w-[240px]">
+          {/* Main Track Line */}
+          <div className="absolute left-1/2 top-0 bottom-[34%] w-[3px] bg-border-subtle/50 -translate-x-1/2 rounded-full" />
+          {/* Faded track to target since it never reaches it */}
+          <div className="absolute left-1/2 top-[66%] bottom-0 w-[3px] bg-border-subtle/20 -translate-x-1/2 rounded-full" />
+          
+          {/* Labels */}
+          <div className="absolute w-full top-[0%] flex justify-between items-center -mt-3">
+             <span className="text-xs text-accent-red w-1/2 text-right pr-6 font-medium">Refunded</span>
+             <span className="text-sm font-semibold text-accent-purple w-1/2 pl-6 drop-shadow-sm">User</span>
           </div>
-        </div>
-        <div className="mt-4 text-center">
-          <span className="text-[10px] text-accent-green/80">
-            Funds RETURNED — user protected
-          </span>
+          <div className="absolute w-full top-[33%] flex justify-between items-center -mt-3">
+             <span className="text-xs text-text-secondary w-1/2 text-right pr-6">Locked</span>
+             <span className="text-sm font-semibold text-text-primary w-1/2 pl-6">Escrow</span>
+          </div>
+          <div className="absolute w-full top-[66%] flex justify-between items-center -mt-3">
+             <span className="text-xs text-accent-red w-1/2 text-right pr-6 font-medium">Rejects</span>
+             <span className="text-sm font-semibold text-text-primary w-1/2 pl-6">Talos</span>
+          </div>
+          <div className="absolute w-full top-[100%] flex justify-between items-center -mt-3 opacity-40">
+             <span className="text-xs text-text-secondary w-1/2 text-right pr-6">Blocked</span>
+             <span className="text-sm font-semibold text-text-primary w-1/2 pl-6">Target</span>
+          </div>
+
+          {/* Node Dots */}
+          <div className="absolute left-1/2 top-[0%] w-3 h-3 rounded-full bg-accent-purple -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+          <div className="absolute left-1/2 top-[33%] w-3 h-3 rounded-full bg-border-subtle -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+          <div className="absolute left-1/2 top-[66%] w-3 h-3 rounded-full bg-border-subtle -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+          <div className="absolute left-1/2 top-[100%] w-3 h-3 rounded-full bg-border-subtle/20 -translate-x-1/2 -mt-1.5 ring-4 ring-bg-base z-10" />
+
+          {/* Animated Dot */}
+          <div className="flow-dot-fail absolute left-1/2 w-4 h-4 rounded-full -translate-x-1/2 -mt-2 shadow-[0_0_16px_currentColor] z-20" />
         </div>
       </div>
-    </div>
-  );
-}
-
-function FlowNode({ label, sublabel, color }: { label: string; sublabel: string; color: "cyan" | "green" | "red" }) {
-  const border = {
-    cyan: "border-accent-cyan/40",
-    green: "border-accent-green/40",
-    red: "border-accent-red/40",
-  }[color];
-  const text = {
-    cyan: "text-accent-cyan",
-    green: "text-accent-green",
-    red: "text-accent-red",
-  }[color];
-
-  return (
-    <div className={`w-full max-w-[160px] border ${border} rounded-sm px-3 py-2 bg-bg-panel text-center`}>
-      <p className={`text-[11px] font-bold ${text}`}>{label}</p>
-      <p className="text-[10px] text-text-secondary">{sublabel}</p>
-    </div>
-  );
-}
-
-function FlowArrow({ color }: { color: "cyan" | "green" | "red" }) {
-  const c = {
-    cyan: "text-accent-cyan/50",
-    green: "text-accent-green/50",
-    red: "text-accent-red/50",
-  }[color];
-  return (
-    <div className={`py-1 ${c} text-center text-sm leading-none`}>
-      ↓
-    </div>
-  );
-}
-
-function FlowArrowReverse() {
-  return (
-    <div className="py-1 text-accent-green/50 text-center text-sm leading-none">
-      ↑
     </div>
   );
 }
@@ -127,27 +108,22 @@ function FlowArrowReverse() {
 const threats = [
   {
     title: "Data Hallucination",
-    problem: "Agent claims a wrong price — doesn't match reality",
     solution: "Live comparison against Chainlink oracle feed",
   },
   {
     title: "Post-Commit Tampering",
-    problem: "Agent tries to verify with a different claim than committed",
     solution: "Cryptographic hash lock — tampering detected instantly",
   },
   {
     title: "Overspending",
-    problem: "Agent tries to drain the entire balance in one trade",
     solution: "Daily/weekly spending limits + max drawdown policy",
   },
   {
     title: "Slippage Manipulation",
-    problem: "Agent sets intentionally low minimum output",
     solution: "Market-price-based slippage guard enforcement",
   },
   {
-    title: "Unauthorized Contract Access",
-    problem: "Agent sends transactions to unknown/malicious contracts",
+    title: "Malicious Contracts",
     solution: "Whitelist — only approved targets allowed",
   },
 ];
@@ -166,14 +142,14 @@ export default function Home() {
         className={`border-b border-border-subtle transition-all duration-700 ${heroSection.inView ? "animate-fade-up" : "opacity-0"}`}
       >
         <div className="max-w-5xl mx-auto px-6 py-16">
-          <div className="flex items-baseline gap-3 mb-6">
-            <span className="text-accent-cyan font-bold text-3xl tracking-[0.3em]">TALOS</span>
-            <span className="text-text-secondary text-xs tracking-wider">PROTOCOL</span>
+          <div className="flex items-baseline gap-3 mb-8">
+            <span className="text-accent-purple font-extrabold text-4xl tracking-widest drop-shadow-sm">TALOS</span>
+            <span className="text-text-secondary/80 text-xs tracking-[0.2em] font-medium">PROTOCOL</span>
           </div>
-          <h1 className="text-xl lg:text-2xl text-text-primary leading-relaxed max-w-xl">
+          <h1 className="text-2xl lg:text-4xl text-text-primary leading-tight max-w-2xl font-semibold tracking-tight">
             Pre-trade
-            <span className="text-accent-cyan"> claim verification</span> and
-            <span className="text-accent-cyan"> fund protection</span> layer for autonomous AI agents
+            <span className="text-accent-purple drop-shadow-sm"> claim verification</span> and
+            <span className="text-accent-purple drop-shadow-sm"> fund protection</span> layer for autonomous AI agents.
           </h1>
           <p className="text-text-secondary text-sm mt-4 max-w-lg leading-relaxed">
             Agents must prove their claims before executing trades.
@@ -182,7 +158,7 @@ export default function Home() {
           <div className="flex items-center gap-6 mt-8">
             <Link
               href="/demo"
-              className="px-6 py-2.5 bg-accent-cyan text-bg-base font-bold text-xs tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(57,208,216,0.3)] transition-all duration-300"
+              className="px-8 py-3 bg-accent-purple text-white font-semibold text-sm tracking-wide rounded-full hover:shadow-[0_0_24px_rgba(131,110,249,0.4)] hover:-translate-y-0.5 transition-all duration-300"
             >
               LIVE DEMO
             </Link>
@@ -199,28 +175,25 @@ export default function Home() {
         className="max-w-5xl mx-auto px-6 py-16"
       >
         <h2 className={`text-sm font-bold text-text-secondary tracking-wider mb-8 transition-all duration-700 ${threatSection.inView ? "animate-fade-up" : "opacity-0"}`}>
-          5 AGENT THREATS AND HOW TALOS SOLVES THEM
+          5 THREATS SOLVED
         </h2>
 
-        <div className="space-y-2">
+        <div className="flex flex-col gap-3">
           {threats.map((t, i) => (
             <div
               key={i}
-              className={`grid grid-cols-12 gap-4 items-center p-4 border border-border-subtle rounded-sm bg-bg-panel hover:border-accent-cyan/30 transition-all duration-500 ${threatSection.inView ? "animate-fade-up" : "opacity-0"}`}
+              className={`group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-5 border border-border-subtle/50 rounded-xl bg-bg-elevated/20 hover:bg-bg-elevated/40 hover:border-accent-purple/40 hover:-translate-y-0.5 hover:shadow-md transition-all duration-500 ${threatSection.inView ? "animate-fade-up" : "opacity-0"}`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              <div className="col-span-1 text-center">
-                <span className="text-text-secondary text-[10px]">0{i + 1}</span>
+              <div className="flex items-center gap-4 md:w-1/3">
+                <span className="text-text-secondary/50 text-[10px] font-mono">0{i + 1}</span>
+                <p className="text-sm text-text-primary font-bold group-hover:text-accent-purple transition-colors duration-300">{t.title}</p>
               </div>
-              <div className="col-span-5">
-                <p className="text-xs text-text-primary font-bold">{t.title}</p>
-                <p className="text-[10px] text-text-secondary mt-0.5">{t.problem}</p>
-              </div>
-              <div className="col-span-1 text-center">
-                <span className="text-accent-cyan/40">→</span>
-              </div>
-              <div className="col-span-5">
-                <p className="text-[11px] text-accent-green">{t.solution}</p>
+              
+              <div className="hidden md:block text-accent-purple/40 font-bold group-hover:text-accent-purple/80 transition-colors duration-300">→</div>
+              
+              <div className="md:w-1/2 flex md:justify-end">
+                <p className="text-xs text-accent-green/90 font-medium text-left md:text-right">{t.solution}</p>
               </div>
             </div>
           ))}
@@ -257,8 +230,8 @@ export default function Home() {
             { num: "02", title: "ORACLE", desc: "Chainlink price comparison" },
             { num: "03", title: "POLICY", desc: "Limits, drawdown, slippage checks" },
           ].map((layer) => (
-            <div key={layer.num} className="bg-bg-panel p-5 text-center animate-shimmer">
-              <span className="text-accent-cyan/50 text-[10px]">{layer.num}</span>
+            <div key={layer.num} className="bg-bg-elevated/40 p-6 text-center animate-shimmer backdrop-blur-sm">
+              <span className="text-accent-purple/60 text-[11px] font-semibold">{layer.num}</span>
               <p className="text-xs font-bold text-text-primary mt-1">{layer.title}</p>
               <p className="text-[10px] text-text-secondary mt-1">{layer.desc}</p>
             </div>
@@ -273,7 +246,7 @@ export default function Home() {
         </p>
         <Link
           href="/demo"
-          className="inline-block px-10 py-3 bg-accent-cyan text-bg-base font-bold text-xs tracking-wider rounded-sm hover:shadow-[0_0_24px_rgba(57,208,216,0.4)] transition-all duration-300"
+          className="inline-block px-12 py-3.5 bg-accent-purple text-white font-semibold text-sm tracking-wide rounded-full hover:shadow-[0_0_30px_rgba(131,110,249,0.5)] hover:-translate-y-1 transition-all duration-300"
         >
           OPEN DEMO
         </Link>

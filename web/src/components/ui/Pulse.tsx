@@ -3,7 +3,7 @@
 import clsx from "clsx";
 
 interface PulseProps {
-  color?: "green" | "red" | "amber" | "cyan";
+  color?: "green" | "red" | "amber" | "cyan" | "purple";
   size?: "sm" | "md";
 }
 
@@ -12,6 +12,7 @@ const colorMap = {
   red: "bg-accent-red",
   amber: "bg-accent-amber",
   cyan: "bg-accent-cyan",
+  purple: "bg-accent-purple",
 };
 
 export function Pulse({ color = "green", size = "sm" }: PulseProps) {
