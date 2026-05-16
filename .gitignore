@@ -1,0 +1,33 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+contracts/lib/
+
+# Node
+node_modules/
+.next/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Sensitive project docs (not for public)
+TALOS-PROMPT-ROADMAP.md
+TALOS-MONAD-proje-dokumani.md
+MONAD_EKOSISTEM_RAPORU.md
+CLAUDE.md
+# Local Claude settings
+.claude/

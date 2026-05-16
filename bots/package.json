@@ -1,0 +1,24 @@
+{
+  "name": "@talos-protocol/bots",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "bots:honest": "tsx src/honest-bot.ts",
+    "bots:yield": "tsx src/yield-bot.ts",
+    "bots:liar": "tsx src/liar-bot.ts",
+    "bots:manip": "tsx src/manip-bot.ts",
+    "demo": "tsx src/demo.ts"
+  },
+  "dependencies": {
+    "@talos-protocol/sdk": "workspace:*",
+    "viem": "^2.31.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}

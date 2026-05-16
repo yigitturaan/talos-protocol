@@ -1,0 +1,179 @@
+{
+  "_description": "TALOS Protocol — Canonical contract addresses (single source of truth)",
+  "_updated": "2026-05-15",
+  "_verified_via": "WebFetch from canonical sources — no address is fabricated",
+
+  "monad_testnet": {
+    "_chainId": 10143,
+    "_rpc": "https://testnet-rpc.monad.xyz",
+    "_note": "Primary deployment target — all deploys go here"
+  },
+
+  "monad_mainnet": {
+    "_chainId": 143,
+    "_rpc": "https://rpc.monad.xyz",
+    "_note": "Fork tests only — DO NOT deploy here",
+
+    "WMON": {
+      "address": "0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A",
+      "_source": "https://docs.monad.xyz/technical-discussion/wrapped-monad"
+    },
+    "USDC": {
+      "address": "0x754704Bc059F8C67012fEd69BC8A327a5aafb603",
+      "decimals": 6,
+      "_source": "https://api.dexscreener.com — verified via cast call (symbol=USDC, decimals=6)"
+    },
+    "Multicall3": {
+      "address": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "_source": "https://www.multicall3.com/deployments"
+    },
+    "EntryPoint_v0_6": {
+      "address": "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
+      "_source": "https://docs.monad.xyz"
+    },
+
+    "uniswap_v4": {
+      "_source": "https://developers.uniswap.org/contracts/v4/deployments",
+      "_verified": "2026-05-15 — all 6 original addresses confirmed, 2 new found",
+      "PoolManager": "0x188d586ddcf52439676ca21a244753fa19f9ea8e",
+      "UniversalRouter": "0x0d97dc33264bfc1c226207428a79b26757fb9dc3",
+      "UniversalRouter_v2_1_1": "0xfdf682f51fe81aa4898f0ae2163d8a55c127fbc7",
+      "PositionManager": "0x5b7ec4a94ff9bedb700fb82ab09d5846972f4016",
+      "PositionDescriptor": "0x5770d2914355a6d0a39a70aeea9bcce55df4201b",
+      "StateView": "0x77395f3b2e73ae90843717371294fa97cc419d64",
+      "Quoter": "0xa222dd357a9076d1091ed6aa2e16c9742dd26891",
+      "Permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3"
+    },
+
+    "chainlink": {
+      "_source": "https://reference-data-directory.vercel.app/feeds-monad-mainnet.json",
+      "_verified": "2026-05-15 — 95 total feeds found, major feeds listed below",
+
+      "MON_USD": {
+        "address": "0xFB504aD06Ab5E6c63FE0A46FEa245214838E8015",
+        "decimals": 18,
+        "heartbeat": 3600,
+        "deviation": "0.05%",
+        "_note": "Standard shared feed (18 decimals — NOT 8)"
+      },
+      "MON_USD_SVR": {
+        "address": "0x432AAcD32253B6683f6483fB0d3285bA0082EfDb",
+        "decimals": 18,
+        "deviation": "0.02%",
+        "_note": "SVR (Share-Validated Receipts) proxy — MEV recapture oracle"
+      },
+      "BTC_USD": {
+        "address": "0xc1d4C3331635184fA4C3c22fb92211B2Ac9E0546",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.02%"
+      },
+      "ETH_USD": {
+        "address": "0x1B1414782B859871781bA3E4B0979b9ca57A0A04",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "USDC_USD": {
+        "address": "0xf5F15f188AbCB0d165D1Edb7f37F7d6fA2fCebec",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "USDT_USD": {
+        "address": "0x1a1Be4c184923a6BFF8c27cfDf6ac8bDE4DE00FC",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "SOL_USD": {
+        "address": "0x16F8008c3e89f62e5e2b909Ce70999370D38F4F2",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "LINK_USD": {
+        "address": "0x5c266b5c655664d6c99a13fF0d7F1F7eaF4Ac9ba",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "AAVE_USD": {
+        "address": "0x2a954d493eE80BcC7cDeF56DB6fC6edC6758CA5d",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "UNI_USD": {
+        "address": "0x8Cc589634A0B5959Fb29fc1111CFf26356b11918",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "DOGE_USD": {
+        "address": "0x1c747D909102bfCdb305C54bDdDBdA3eF588B1d0",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "BNB_USD": {
+        "address": "0xEB58Fa36e5715fc1Bdb9959E0Ae01803B7432882",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "AVAX_USD": {
+        "address": "0xb0c0202E6d8b978f9b6FE6B5e50ebD6FD7A962a1",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "WBTC_USD": {
+        "address": "0x2D1Df1bD061AAc38C22407AD69d69bCC3C62edBD",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "WSTETH_USD": {
+        "address": "0xe6cd21b31948503dB54A07875999979722504B9A",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      },
+      "STETH_USD": {
+        "address": "0xad7AF5c6d78Ef5f4d3c4133593047d9E2A8BDa8d",
+        "decimals": 8,
+        "heartbeat": 3600,
+        "deviation": "0.05%"
+      }
+    }
+  },
+
+  "morpho": {
+    "_source": "https://app.morpho.org/monad/earn — verified on-chain 2026-05-16 via eth_getCode + ERC-4626 calls",
+    "_note": "Morpho Blue core NOT deployed on Monad (0xBBBB... has no code). Vaults are standalone ERC-4626.",
+
+    "steakhouse_prime_eth": {
+      "vault": "0xbeef04b01e0275D4ac2e2986256BB14E3Ff6ef42",
+      "asset": "0xee8c0e9f1bffb4eb878d8f15f368a02a35481242",
+      "asset_name": "Wrapped Ether (WETH)",
+      "asset_decimals": 18,
+      "_source": "https://app.morpho.org/monad/vault/0xbeef04b01e0275D4ac2e2986256BB14E3Ff6ef42/steakhouse-prime-eth"
+    },
+    "steakhouse_hy_usdc": {
+      "vault": "0xbeEFf443C3CbA3E369DA795002243BeaC311aB83",
+      "asset": "0x754704Bc059F8C67012fEd69BC8A327a5aafb603",
+      "asset_name": "USDC",
+      "asset_decimals": 6,
+      "_source": "https://app.morpho.org/monad/vault/0xbeEFf443C3CbA3E369DA795002243BeaC311aB83/steakhouse-high-yield-usdc"
+    }
+  },
+
+  "talos": {
+    "_note": "TALOS protocol addresses — populated after deploy to testnet",
+    "TalosProtocol": null,
+    "PriceVerifier": null,
+    "BalanceVerifier": null,
+    "StateVerifier": null
+  }
+}
