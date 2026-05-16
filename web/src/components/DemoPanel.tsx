@@ -244,24 +244,24 @@ export function DemoPanel() {
         >
           <div className="space-y-3">
             {/* User section */}
-            <div className="p-3 rounded-md bg-bg-elevated/30 border border-border-subtle/50">
-              <p className="text-[11px] text-accent-purple mb-2 font-semibold tracking-wide">USER</p>
-              <div className="flex justify-between text-[11px]">
+            <div className="p-4 rounded-md bg-bg-elevated/30 border border-border-subtle/50">
+              <p className="text-xs text-accent-purple mb-3 font-bold tracking-wide">USER</p>
+              <div className="flex justify-between text-sm">
                 <span className="text-text-secondary">Address</span>
                 <span className="text-text-primary font-mono">
                   {result.user.address.slice(0, 6)}...{result.user.address.slice(-4)}
                 </span>
               </div>
-              <div className="flex justify-between text-[11px] mt-1">
+              <div className="flex justify-between text-sm mt-2">
                 <span className="text-text-secondary">tUSDC Balance</span>
-                <span className="text-text-primary">
+                <span className="text-text-primary font-bold">
                   {result.user.balanceBefore} → {result.user.balanceAfter}
                 </span>
               </div>
-              <div className="flex justify-between text-[11px] mt-1">
+              <div className="flex justify-between text-sm mt-2">
                 <span className="text-text-secondary">Escrow</span>
                 {result.passed ? (
-                  <span className="text-accent-purple">100 tUSDC spent on swap</span>
+                  <span className="text-accent-purple font-bold">100 tUSDC spent on swap</span>
                 ) : (
                   <span className="text-accent-green font-bold">100 tUSDC REFUNDED</span>
                 )}
@@ -269,34 +269,34 @@ export function DemoPanel() {
             </div>
 
             {/* Agent section */}
-            <div className="p-3 rounded-md bg-bg-elevated/30 border border-border-subtle/50">
-              <p className="text-[11px] text-accent-amber mb-2 font-semibold tracking-wide">AGENT (Bot)</p>
-              <div className="flex justify-between text-[11px]">
+            <div className="p-4 rounded-md bg-bg-elevated/30 border border-border-subtle/50">
+              <p className="text-xs text-accent-amber mb-3 font-bold tracking-wide">AGENT (Bot)</p>
+              <div className="flex justify-between text-sm">
                 <span className="text-text-secondary">Address</span>
                 <span className="text-text-primary font-mono">
                   {result.agent.address.slice(0, 6)}...{result.agent.address.slice(-4)}
                 </span>
               </div>
-              <div className="flex justify-between text-[11px] mt-1">
+              <div className="flex justify-between text-sm mt-2">
                 <span className="text-text-secondary">Reputation</span>
                 <span
-                  className={
+                  className={`font-bold ${
                     result.agent.scoreAfter >= result.agent.scoreBefore
                       ? "text-accent-green"
                       : "text-accent-red"
-                  }
+                  }`}
                 >
                   {result.agent.scoreBefore} → {result.agent.scoreAfter}
                 </span>
               </div>
-              <div className="flex justify-between text-[11px] mt-1">
+              <div className="flex justify-between text-sm mt-2">
                 <span className="text-text-secondary">Stake</span>
                 <span
-                  className={
+                  className={`font-bold ${
                     result.agent.stakeAfter === result.agent.stakeBefore
                       ? "text-text-primary"
                       : "text-accent-red"
-                  }
+                  }`}
                 >
                   {result.agent.stakeBefore} → {result.agent.stakeAfter} MON
                   {result.agent.stakeAfter !== result.agent.stakeBefore && " (slashed!)"}
@@ -305,48 +305,48 @@ export function DemoPanel() {
             </div>
 
             {/* Fund Flow */}
-            <div className="p-3 rounded-md bg-bg-base/50 border border-border-subtle/50">
-              <p className="text-[11px] text-text-secondary mb-3 font-semibold tracking-wide">FUND FLOW</p>
+            <div className="p-4 rounded-md bg-bg-base/50 border border-border-subtle/50">
+              <p className="text-xs text-text-secondary mb-4 font-bold tracking-wide">FUND FLOW</p>
               {result.passed ? (
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-purple">1.</span>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="text-accent-purple font-bold">1.</span>
                     <span className="text-text-primary/90">User locked 100 tUSDC → Escrow</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-purple">2.</span>
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="text-accent-purple font-bold">2.</span>
                     <span className="text-text-primary/90">Agent verified → Escrow released</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-green">3.</span>
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="text-accent-green font-bold">3.</span>
                     <span className="text-accent-green font-bold">100 tUSDC → Used for Swap/Deposit</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] mt-1 pt-1 border-t border-border-subtle">
+                  <div className="flex items-center gap-3 text-sm mt-3 pt-3 border-t border-border-subtle">
                     <span className="text-text-secondary">Result:</span>
-                    <span className="text-text-primary">User funds went to TRADE (successful execution)</span>
+                    <span className="text-text-primary font-bold">User funds went to TRADE (successful execution)</span>
                   </div>
                 </div>
               ) : (
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-purple">1.</span>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="text-accent-purple font-bold">1.</span>
                     <span className="text-text-primary/90">User locked 100 tUSDC → Escrow</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-red">2.</span>
-                    <span className="text-accent-red">Agent verification FAILED → Trade BLOCKED</span>
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="text-accent-red font-bold">2.</span>
+                    <span className="text-accent-red font-bold">Agent verification FAILED → Trade BLOCKED</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-green">3.</span>
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="text-accent-green font-bold">3.</span>
                     <span className="text-accent-green font-bold">100 tUSDC → REFUNDED to user!</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px]">
-                    <span className="text-accent-red">4.</span>
-                    <span className="text-accent-red">10% of agent stake SLASHED (penalty)</span>
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="text-accent-red font-bold">4.</span>
+                    <span className="text-accent-red font-bold">10% of agent stake SLASHED (penalty)</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] mt-1 pt-1 border-t border-border-subtle">
+                  <div className="flex items-center gap-3 text-sm mt-3 pt-3 border-t border-border-subtle">
                     <span className="text-text-secondary">Result:</span>
-                    <span className="text-accent-green font-bold">User UNHARMED — funds returned!</span>
+                    <span className="text-accent-green font-bold text-base">User UNHARMED — funds returned!</span>
                   </div>
                 </div>
               )}
@@ -354,20 +354,20 @@ export function DemoPanel() {
 
             {/* Verdict */}
             {result.passed ? (
-              <div className="p-2 rounded-sm bg-accent-green/10 border border-accent-green/30">
-                <p className="text-[11px] text-accent-green font-bold">
+              <div className="p-3 rounded-md bg-accent-green/10 border border-accent-green/30">
+                <p className="text-sm text-accent-green font-bold">
                   Verification passed!
                 </p>
-                <p className="text-[10px] text-accent-green/80 mt-0.5">
+                <p className="text-xs text-accent-green/80 mt-1">
                   Agent made a correct claim → funds released → trade executed.
                 </p>
               </div>
             ) : (
-              <div className="p-2 rounded-sm bg-accent-red/10 border border-accent-red/30">
-                <p className="text-[11px] text-accent-red font-bold">
+              <div className="p-3 rounded-md bg-accent-red/10 border border-accent-red/30">
+                <p className="text-sm text-accent-red font-bold">
                   Verification failed!
                 </p>
-                <p className="text-[10px] text-accent-red/80 mt-0.5">
+                <p className="text-xs text-accent-red/80 mt-1">
                   Agent lied/manipulated → trade blocked → user protected.
                 </p>
               </div>

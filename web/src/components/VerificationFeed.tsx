@@ -71,19 +71,19 @@ function EventCard({ event: e }: { event: VerificationEvent }) {
           )}
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           {e.amount && (
-            <span className="text-[11px] text-text-secondary">
+            <span className="text-xs sm:text-sm text-text-secondary">
               {formatEther(e.amount)} <span className="opacity-50">USDC</span>
             </span>
           )}
           {e.slashAmount && (
-            <span className="text-[11px] text-accent-red font-medium">
+            <span className="text-xs sm:text-sm text-accent-red font-bold">
               -{formatEther(e.slashAmount)} MON
             </span>
           )}
           {e.deviationBps !== undefined && e.deviationBps > 0 && (
-            <span className="text-[11px] text-accent-amber">
+            <span className="text-xs sm:text-sm text-accent-amber font-bold">
               {(e.deviationBps / 100).toFixed(1)}% drift
             </span>
           )}
@@ -117,16 +117,16 @@ export function VerificationFeed() {
         )}
       </Panel>
 
-      <div className="grid grid-cols-2 gap-px">
+      <div className="grid grid-cols-2 gap-4 mt-4">
         <Panel title="Protected Funds">
-          <p className="text-accent-green text-lg font-mono">
+          <p className="text-accent-green text-3xl font-bold font-mono py-2">
             {totalProtected > 0n
               ? `${formatEther(totalProtected)} MON`
               : "0"}
           </p>
         </Panel>
         <Panel title="Blocked Txns">
-          <p className="text-accent-red text-lg font-mono">{blockedCount}</p>
+          <p className="text-accent-red text-3xl font-bold font-mono py-2">{blockedCount}</p>
         </Panel>
       </div>
     </div>
