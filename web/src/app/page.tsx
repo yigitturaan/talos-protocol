@@ -132,9 +132,9 @@ export default function Home() {
   const heroSection = useInView();
   const threatSection = useInView();
   const flowSection = useInView();
-  const layerSection = useInView();
-
   const sdkSection = useInView();
+  const monadSection = useInView();
+  const layerSection = useInView();
 
   return (
     <div className="min-h-screen bg-bg-base text-text-primary overflow-x-hidden">
@@ -276,6 +276,76 @@ export default function Home() {
 console.log(tx.status); <span className="text-text-secondary/50">{"// 'VERIFIED' or 'REFUNDED'"}</span>
                  </code>
                </pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Monad & MEV Protection */}
+      <section
+        ref={monadSection.ref}
+        className={`max-w-5xl mx-auto px-6 py-16 border-t border-border-subtle transition-all duration-700 ${monadSection.inView ? "animate-fade-up" : "opacity-0"}`}
+      >
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Monad Features */}
+          <div className="lg:w-1/3">
+            <h2 className="text-sm font-bold text-text-secondary tracking-wider mb-4">
+              MONAD NATIVE
+            </h2>
+            <h3 className="text-xl font-bold text-text-primary mb-4 leading-tight">
+              Speed & Architecture
+            </h3>
+            <div className="space-y-4 mt-6">
+              <div className="p-4 rounded-xl border border-border-subtle/50 bg-bg-elevated/20 hover:border-accent-purple/30 transition-colors">
+                <span className="text-accent-purple font-bold text-sm">400ms Block Time</span>
+                <p className="text-[11px] text-text-secondary mt-1">The entire Commit-Verify-Execute flow completes in less than 2 seconds seamlessly.</p>
+              </div>
+              <div className="p-4 rounded-xl border border-border-subtle/50 bg-bg-elevated/20 hover:border-accent-purple/30 transition-colors">
+                <span className="text-accent-purple font-bold text-sm">Deferred Execution</span>
+                <p className="text-[11px] text-text-secondary mt-1">Monad's N-2 state lag means you can't trust current state alone. Escrow neutralizes this risk.</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* MEV Protection */}
+          <div className="lg:w-2/3">
+            <h2 className="text-sm font-bold text-text-secondary tracking-wider mb-4">
+              DARK FOREST DEFENSE
+            </h2>
+            <h3 className="text-xl font-bold text-text-primary mb-4 leading-tight">
+              Absolute MEV & Sandwich Protection
+            </h3>
+            <p className="text-xs text-text-secondary mb-6">
+              Talos's Commit-Reveal mechanism is purpose-built to stop MEV bots from exploiting AI agent strategies.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-5 rounded-xl border border-border-subtle/50 bg-bg-elevated/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="flex items-center justify-center w-5 h-5 rounded bg-accent-purple/20 text-accent-purple font-bold text-[10px]">1</span>
+                  <span className="text-sm text-text-primary font-bold">One-Way Hashes</span>
+                </div>
+                <p className="text-[11px] text-text-secondary leading-relaxed">
+                  Intents are committed as keccak256 hashes. A malicious MEV bot cannot reverse-engineer the hash to steal your strategy (Zero Alpha Leakage).
+                </p>
+              </div>
+              <div className="p-5 rounded-xl border border-border-subtle/50 bg-bg-elevated/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="flex items-center justify-center w-5 h-5 rounded bg-accent-purple/20 text-accent-purple font-bold text-[10px]">2</span>
+                  <span className="text-sm text-text-primary font-bold">Atomic 400ms Execution</span>
+                </div>
+                <p className="text-[11px] text-text-secondary leading-relaxed">
+                  When the secret is revealed, verification and the swap happen in the exact same atomic transaction block. No window is left for front-running.
+                </p>
+              </div>
+              <div className="p-5 rounded-xl border border-border-subtle/50 bg-bg-elevated/20 md:col-span-2">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="flex items-center justify-center w-5 h-5 rounded bg-accent-purple/20 text-accent-purple font-bold text-[10px]">3</span>
+                  <span className="text-sm text-text-primary font-bold">SlippageGuard Policy</span>
+                </div>
+                <p className="text-[11px] text-text-secondary leading-relaxed">
+                  If an MEV bot attempts pool manipulation, the on-chain SlippageGuard Engine compares expected minimum outputs against live metrics. Any sandwich attempt triggers an instant block and safe refund.
+                </p>
+              </div>
             </div>
           </div>
         </div>
